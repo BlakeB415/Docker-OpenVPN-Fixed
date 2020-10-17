@@ -2,7 +2,7 @@ FROM centos:8
 
 RUN yum install -y epel-release && \
 	yum install -y openvpn unzip net-tools iptables && \
-	curl -sS "https://www.privateinternetaccess.com/openvpn/openvpn-strong.zip" -o /temp.zip && \
+	curl -sS "https://www.privateinternetaccess.com/openvpn/openvpn-strong-nextgen.zip" -o /temp.zip && \
 	unzip -q /temp.zip -d /pia && \
 	rm -f /temp.zip && \
 	yum remove -y epel-release unzip && \
@@ -12,5 +12,5 @@ RUN yum install -y epel-release && \
 COPY openvpn.sh /bin/openvpn.sh
 WORKDIR /pia
 
-ENV REGION="US East"
+ENV REGION="US Chicago"
 ENTRYPOINT ["openvpn.sh"]
