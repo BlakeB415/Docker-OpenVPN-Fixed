@@ -10,6 +10,7 @@ Has a firewall/killswitch configured, so your information cannot be leaked if th
 * Updated README
 * Added firewall/killswitch support
 * Automatically creates tunnel device
+* Uses PIA NextGen Servers
 
 # What is Private Internet Access
 Private Internet Access VPN Service encrypts your connection and provides you with an anonymous IP to protect your privacy.
@@ -31,7 +32,7 @@ docker run --cap-add=NET_ADMIN --name=pia -d \
   itsdaspecialk/pia-openvpn
 ```
 
-Substitute the environment variables `REGION`, `USERNAME`, and `PASSWORD` as needed. Note that `REGION` is optional, and defaults to `US East`.
+Substitute the environment variables `REGION`, `USERNAME`, and `PASSWORD` as needed. Note that `REGION` is optional, and defaults to `US Chicago`.
 
 Due to the nature of the VPN client, this container must be started with some additional privileges. `--cap-add=NET_ADMIN` makes sure that the tunnel can be created from within the container.
 
@@ -45,6 +46,9 @@ docker run -it --rm --net=container:pia centos
 ```
 
 The IP address returned after this execution should be different from the IP address you would get without specifying `--net=container:pia`.
+
+## Note: Synology Users
+Some users have reported that the Centos 8 image (the default) does not work with their Synology NAS. If this is affecting you, please use the Centos 7 tag `itsdaspecialk/pia-openvpn:centos7`
 
 # Advanced usage
 
